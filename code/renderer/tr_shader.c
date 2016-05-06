@@ -2293,10 +2293,11 @@ If found, it will return a valid shader
 =====================
 */
 static char *FindShaderInShaderText( const char *shadername ) {
-
 	char *token, *p;
-
 	int i, hash;
+	
+    // FIXME
+    return NULL;
 
 	hash = generateHashValue(shadername, MAX_SHADERTEXT_HASH);
 
