@@ -2297,7 +2297,8 @@ static char *FindShaderInShaderText( const char *shadername ) {
 	int i, hash;
 	
     // FIXME
-    return NULL;
+    if (!shaderTextHashTable[hash])
+        return NULL;
 
 	hash = generateHashValue(shadername, MAX_SHADERTEXT_HASH);
 
