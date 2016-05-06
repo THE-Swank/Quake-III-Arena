@@ -66,7 +66,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <X11/keysym.h>
 #include <X11/cursorfont.h>
 
+#if 0 // FIXME
 #include <X11/extensions/xf86dga.h>
+#endif
+
 #include <X11/extensions/xf86vmode.h>
 
 #define	WINDOW_CLASS_NAME	"Quake III: Arena"
@@ -394,6 +397,7 @@ static void install_grabs(void)
 
   mouseResetTime = Sys_Milliseconds ();
 
+#if 0 // FIXME
   if (in_dgamouse->value)
   {
     int MajorVersion, MinorVersion;
@@ -414,6 +418,7 @@ static void install_grabs(void)
     mwy = glConfig.vidHeight / 2;
     mx = my = 0;
   }
+#endif
 
   XGrabKeyboard(dpy, win,
                 False,
@@ -425,12 +430,14 @@ static void install_grabs(void)
 
 static void uninstall_grabs(void)
 {
+#if 0 // FIXME
   if (in_dgamouse->value)
   {
 		if (com_developer->value)
 			ri.Printf( PRINT_ALL, "DGA Mouse - Disabling DGA DirectVideo\n" );
     XF86DGADirectVideo(dpy, DefaultScreen(dpy), 0);
   }
+#endif
 
   XChangePointerControl(dpy, qtrue, qtrue, mouse_accel_numerator, 
                         mouse_accel_denominator, mouse_threshold);
@@ -929,6 +936,7 @@ int GLW_SetMode( const char *drivername, int mode, qboolean fullscreen )
     vidmode_ext = qtrue;
   }
 
+#if 0 // FIXME
   // Check for DGA	
   dga_MajorVersion = 0, dga_MinorVersion = 0;
   if (in_dgamouse->value)
@@ -944,6 +952,7 @@ int GLW_SetMode( const char *drivername, int mode, qboolean fullscreen )
                  dga_MajorVersion, dga_MinorVersion);
     }
   }
+#endif
 
   if (vidmode_ext)
   {
